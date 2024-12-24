@@ -13,7 +13,7 @@ app.use('/', userRouter)
 
 app.get('/', (req, res) => {
     res.send(
-        '<div align="center" style="color:black;"><h1 style="color:red;">Welcome to MERN Assignment5 - Mohd Suhel</h1><h3>Every thing is query base</h3> <p>For user register use- /register?fields &nbsp;  *email is required</p>For user update use- /update/user_id?fields <p><p>For user delete user- /delete/user_id</p></p></div>');
+        '<div align="center" style="color:black;"><h1 style="color:red;">Welcome to MERN Assignment5 - Mohd Suhel</h1><h3>Every thing is query base</h3><p>For users data use- /get/all </p> <p>For user register use- /register?fields &nbsp;  *email is required</p>For user update use- /update/user_id?fields <p><p>For user delete user- /delete/user_id</p></p></div>');
 });
 
 app.listen(port, () => {
