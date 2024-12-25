@@ -32,6 +32,9 @@ const userSchema = mongoose.Schema({
     address:{
         type:String,
     },
+    profilePic:{
+        type:String,
+    },
     isDeleted:{
         type:Boolean,
         default:false

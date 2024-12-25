@@ -111,5 +111,33 @@ const deleteUserByQuery = async (req, res) => {
         res.status(500).json({ message: 'Error fetching users', error: error.message });
     }
 };
+const fileUploadByQuery = async (req, res) => {
+    try {
+        const { id } = req.body; 
+        const file = req.file; 
+        if (!file) {
+            return res.status(400).json({ message: 'No image uploaded' });
+        }
+        const userExists = await users.findById(id);
+        if (!userExists) {
+            return res.status(404).json({ message: 'No user found matching this ID' });
+        }
+        const updatedUser = await users.findByIdAndUpdate(
+            id,
+            { profilePic: file.path }, 
+            { new: true }
+        );
 
-module.exports = { registerUser ,getAllUsers,getUsersByQuery,updateUserByQuery,registerUserByQuery ,deleteUserByQuery};
+        res.status(200).json({
+            message: 'Profile picture updated successfully',
+            user: updatedUser,
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating user', error: error.message });
+    }
+};
+
+
+
+
+module.exports = { registerUser ,getAllUsers,getUsersByQuery,updateUserByQuery,registerUserByQuery ,deleteUserByQuery,fileUploadByQuery};
