@@ -40,7 +40,7 @@ const login = async(req,res)=>{
         }
         const {password:pss,...rest} = existedUser._doc
         const token = jwt.sign({rest},'Suhel',{expiresIn:'5m'})
-        res.status(201).cookie('token',token,{httpOnly:false,secure:false,maxAge:300000}).json({message:'Login successfull',rest})
+        res.status(201).cookie('token',token,{httpOnly:false,secure:true,sameSite: "none",maxAge:300000}).json({message:'Login successfull',rest})
     }
     catch(err){
         res.status(500).json({message:'internal servar error',err})
