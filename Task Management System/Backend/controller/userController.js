@@ -39,8 +39,8 @@ const login = async(req,res)=>{
             return res.status(400).json({message:'Invalid credentials'})
         }
         const {password:pss,...rest} = existedUser._doc
-        const token = jwt.sign({rest},'Suhel',{expiresIn:'2m'})
-        res.status(201).cookie('token',token,{httpOnly:false,secure:false,maxAge:120000}).json({message:'Login successfull',rest})
+        const token = jwt.sign({rest},'Suhel',{expiresIn:'5m'})
+        res.status(201).cookie('token',token,{httpOnly:false,secure:false,maxAge:300000}).json({message:'Login successfull',rest})
     }
     catch(err){
         res.status(500).json({message:'internal servar error',err})

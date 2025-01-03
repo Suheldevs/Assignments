@@ -1,8 +1,6 @@
-const jwt = require('jsonwebtoken')
-
+const jwt = require('jsonwebtoken');
 const verifyToken = (req, res, next) => {
-    try {
-        const token = req.cookies?.token || req.headers?.authentication
+    try {const token = req.cookies?.token || req.headers?.authentication
         if (!token) {
             return res.status(401).json({ message: 'Unothrized: no token provided' })
         }
